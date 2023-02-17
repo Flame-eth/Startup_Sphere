@@ -30,7 +30,7 @@ const Header = (props: Props) => {
             </div>
           </div>
           <div
-            className={`w-[100%] md:w-auto md:basis-0 border border-greenPrim border-opacity-[0.3] md:border-none rounded-[4px] px-[1rem] mt-[10px] md:mt-0 py-[0.5rem] transition-all duration-500 ${
+            className={`w-[100%] md:w-auto md:basis-0 border border-greenPrim border-opacity-[0.3] bg-blackSec md:border-none rounded-[4px] px-[1rem] mt-[10px] md:mt-0 py-[0.5rem] transition-all duration-500 ${
               open ? "absolute top-[60px] left-0" : "hidden md:block"
             }  `}
           >
