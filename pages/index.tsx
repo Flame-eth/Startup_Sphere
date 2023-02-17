@@ -3,7 +3,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import axios from "axios";
-import SelectCoinModal from "../components/SelectCoinModal";
+
 import { useEffect } from "react";
 import { Coin } from "../types";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";

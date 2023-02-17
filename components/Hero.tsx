@@ -18,18 +18,18 @@ const Hero = (props: Props) => {
             Our Mission is to Help Bring{" "}
             <span className="text-greenPrim">Creative Projects</span> to Life
           </h1>
-          <span className="text-[14px] leading-[20px] w-[50%] text-center">
+          <span className="text-[14px] leading-[20px] md:w-[50%] text-center">
             Campaigns make ideas into reality. It is where creators share new
             visions for creative work with the communities that will come
             together and fund them
           </span>
-          <div className="flex items-center">
+          <div className="flex items-center flex-col md:flex-row">
             {stats.map((stat, index) => (
               <div
                 key={index}
                 className="flex items-center flex-col justify-center p-4 border-[2px] border-greenSec bg-black gap-1 w-[250px]"
               >
-                <span className="font-b-700 text-[24px]">{stat.value}</span>
+                <span className="font-b-700 md:text-[24px]">{stat.value}</span>
                 <span className="text-[12px]">{stat.title}</span>
               </div>
             ))}
