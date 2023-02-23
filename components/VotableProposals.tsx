@@ -3,7 +3,7 @@ import Card from "./Card";
 
 type Props = {};
 
-const Popular = (props: Props) => {
+const VotableProposals = (props: Props) => {
   const popularCampaigns = [
     {
       title: "Wonder Girls 2010 Wonder Girls World Tour San Francisco",
@@ -31,7 +31,7 @@ const Popular = (props: Props) => {
       <div className="flex items-center flex-col w-full">
         <div className="flex items-center justify-between px-[16px] md:px-[60px] w-full">
           <h2 className="text-greenSec text-[32px] md:text-[45px] font-b-600">
-            Popular Proposals
+            Votable Proposals
           </h2>
           <span className="text-blackPrim">See All</span>
         </div>
@@ -53,4 +53,4 @@ const Popular = (props: Props) => {
   );
 };
 
-export default Popular;
+export default VotableProposals;

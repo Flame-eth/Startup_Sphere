@@ -600,6 +600,7 @@ var getAllProposals = function () {
           return [4 /*yield*/, contract.methods.getProposalsArray().call()];
         case 1:
           proposals = _a.sent();
+          console.log(proposals);
           return [2 /*return*/, proposals];
       }
     });
