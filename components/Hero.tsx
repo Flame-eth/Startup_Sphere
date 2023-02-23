@@ -9,6 +9,7 @@ const Hero = (props: Props) => {
     { title: "towards creative work", value: "$6,896,124,456" },
     { title: "pledges", value: "70,484,415" },
   ];
+
   return (
     <div className="py-[16px] px-[16px] md:py-[20px] md:px-[60px] h-screen w-full relative animate-ChangeBg sm:bg-cover bg-center bg-hero-bg">
       <Header />
@@ -27,8 +28,7 @@ const Hero = (props: Props) => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="flex items-center flex-col justify-center p-4 border-[2px] border-greenSec bg-black gap-1 w-[250px]"
-              >
+                className="flex items-center flex-col justify-center p-4 border-[2px] border-greenSec bg-black gap-1 w-[250px]">
                 <span className="font-b-700 md:text-[24px]">{stat.value}</span>
                 <span className="text-[12px]">{stat.title}</span>
               </div>
