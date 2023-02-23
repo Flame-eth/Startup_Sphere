@@ -447,14 +447,15 @@ export const getAllProposals = async () => {
   return proposals;
 };
 
-// getAllProposals().then((res) => console.log(res));
+const result = getAllProposals();
+console.log(result);
 
 export const getProposal = async (proposalID: number) => {
   const proposal = await contract.methods.getProposal(proposalID).call();
   return proposal;
 };
 
-// getProposal(0).then((res) => console.log(res));
+// getProposal(706614024).then((res) => console.log(res));
 
 export const transferOwnership = async (newAdmin: string) => {
   const tx = await contract.methods.transferOwnership(newAdmin).send;
@@ -516,6 +517,8 @@ export const getProposalIDs = async () => {
   const tx = await contract.methods.getProposalIDs().call();
   return tx;
 };
+
+getProposalIDs().then((res) => console.log(res));
 
 export const getVoters = async () => {
   const tx = await contract.methods.getVoters().call();

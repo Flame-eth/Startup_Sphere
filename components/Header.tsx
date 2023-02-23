@@ -3,11 +3,17 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Icon } from "@iconify/react";
 
+import { ConnectWallet } from "@thirdweb-dev/react";
+import { useAddress } from "@thirdweb-dev/react";
+
 type Props = {};
 
 const Header = (props: Props) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+
+  const address = useAddress();
+  console.log(address);
 
   return (
     <header className="z-[100]">
@@ -24,20 +30,17 @@ const Header = (props: Props) => {
               className="border rounded-[4px] border-greenPrim border-opacity-30 p-[0.45rem] text-[1.4rem]"
               onClick={() => {
                 setOpen(!open);
-              }}
-            >
+              }}>
               <Icon icon="bx:menu-alt-right" />
             </div>
           </div>
           <div
             className={`w-[100%] md:w-auto md:basis-0 border border-greenPrim border-opacity-[0.3] bg-blackSec md:bg-transparent md:border-none rounded-[4px] px-[1rem] mt-[10px] md:mt-0 py-[0.5rem] transition-all duration-500 ${
               open ? "absolute top-[60px] left-0" : "hidden md:block"
-            }  `}
-          >
+            }  `}>
             <ul
               className={`items-center flex flex-col md:flex-row gap-[10px] md:gap-4 bg-blackSec md:bg-transparent text-[16px] md:h-[19px] w-auto md:pt-0 transition-all duration-500
-          `}
-            >
+          `}>
               {/* <li className="navItem">
                 <Link href="#" className="text-[22px]">
                   <Icon icon="bxl:telegram" />
@@ -53,7 +56,7 @@ const Header = (props: Props) => {
                   <Icon icon="bxl:twitter" />
                 </Link>
               </li> */}
-              <li className="navItem">
+              {/* <li className="navItem">
                 <Link href="/">Features</Link>
               </li>
               <li className="navItem">
@@ -66,7 +69,12 @@ const Header = (props: Props) => {
               </li>
               <li className="p-2 border border-blackTert rounded-[4px]">
                 <Link href="/contact">Login</Link>
-              </li>
+              </li> */}
+              <ConnectWallet
+                accentColor="#00eaa1"
+                colorMode="dark"
+                btnTitle="Connect Wallet"
+              />
               <li className="p-2 border border-blackTert rounded-[4px] flex items-center justify-center">
                 <Link href="/contact" className="w-[60px] inline-block">
                   Sign Up

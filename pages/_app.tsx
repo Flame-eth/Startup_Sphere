@@ -5,13 +5,19 @@ import { store } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
+import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+
 export default function App({ Component, pageProps }: AppProps) {
   let persistor = persistStore(store);
+
+  const activeChainId = ChainId.Goerli;
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Component {...pageProps} />
-      </PersistGate>
-    </Provider>
+    <ThirdwebProvider>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
+      </Provider>
+    </ThirdwebProvider>
   );
 }
