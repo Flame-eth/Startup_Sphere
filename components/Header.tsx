@@ -81,8 +81,8 @@ const Header = (props: Props) => {
                 colorMode="dark"
                 btnTitle="Connect Wallet"
               />
-              <li className="p-2 border border-blackTert rounded-[4px] flex items-center justify-center">
-                <Link href="" className="w-[60px] inline-block">
+              <li className="p-2 border border-blackText rounded-[4px] flex items-center justify-center">
+                <Link href="" className="w-[122px] inline-block">
                   Create Proposal
                 </Link>
               </li>
