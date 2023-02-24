@@ -8,7 +8,7 @@ const Web3 = require("web3");
 
 // Set up Web3 provider
 const web3 = new Web3(
-  "https://goerli.infura.io/v3/e3f8553f110f4c34bef36bf2153e8d88"
+  "https://celo-alfajores.infura.io/v3/e3f8553f110f4c34bef36bf2153e8d88"
 );
 
 const ABI = [
@@ -435,7 +435,7 @@ const ABI = [
   },
 ];
 
-const contractAddress = "0x07757DFd77b4E022489F4fA5F77a76C06b5EEECD";
+const contractAddress = "0x81320F10cD32fda1305930cE5a2Eaf364968B50e";
 
 // Create contract instance
 const contract = new web3.eth.Contract(ABI, contractAddress);
@@ -447,15 +447,14 @@ export const getAllProposals = async () => {
   return proposals;
 };
 
-const result = getAllProposals();
-console.log(result);
+// getAllProposals().then((res) => console.log(res));
 
-export const getProposal = async (proposalID: number) => {
-  const proposal = await contract.methods.getProposal(proposalID).call();
-  return proposal;
-};
+// export const getProposal = async (proposalID: number) => {
+//   const proposal = await contract.methods.getProposal(proposalID).call();
+//   return proposal;
+// };
 
-// getProposal(706614024).then((res) => console.log(res));
+// getProposal(363949477).then((res) => console.log(res));
 
 export const transferOwnership = async (newAdmin: string) => {
   const tx = await contract.methods.transferOwnership(newAdmin).send;
@@ -568,5 +567,17 @@ export const setRequiredVotesPercentage = async (percentage: number) => {
 
 export const getMyProposal = async (user: string) => {
   const tx = await contract.methods.getMyProposal(user).call();
+  return tx;
+};
+
+export const getTotalProposals = async (index: number) => {
+  const tx = await contract.methods.proposalsArray(index).call();
+  return tx;
+};
+
+// getTotalProposals(0).then((res) => console.log(res.name));
+
+export const verifyVoter = async (voter: string) => {
+  const tx = await contract.methods.isVoter(voter).call();
   return tx;
 };

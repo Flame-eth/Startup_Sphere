@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./Header";
 
+import { getAllProposals } from "../Blockchain/funder";
+
 type Props = {};
 
 const Hero = (props: Props) => {

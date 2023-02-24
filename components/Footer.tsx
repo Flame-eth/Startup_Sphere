@@ -16,11 +16,14 @@ const Footer = (props: Props) => {
             <Link href="/">Startup-Sphere</Link>
           </span>
           <p className="text-[14px] leading-[25px] tracking-[0.03em] text-blueTert ">
-            Optice.IO is a cutting-edge medical Saas Company that specializes in
-            helping patients maintain their eye health following refractive eye
-            surgery. Our platform sends personalized reminders for eyedrops
-            based on each patient&apos;s unique taper, ensuring that their
-            recovery is as smooth and successful as possible.
+            Startup Sphere is a decentralized crowdfunding platform designed to
+            help startups raise funds for their projects. The platform is built
+            on blockchain technology, which makes it secure, transparent, and
+            accessible to anyone with an internet connection. Startup Sphere
+            allows startups to create their own fundraising campaigns, set their
+            funding goals, and offer rewards to their backers. Once the funding
+            goal is reached, the startup receives the funds and can use them to
+            develop their project.
           </p>
         </div>
         <div className="flex flex-col lg:flex-row gap-[40px] lg:gap-[70px] lg:justify-end flex-1 w-[100%] lg:w-auto pl-4 lg:pl-0 mt-[40px] lg:mt-0">
@@ -32,8 +35,7 @@ const Footer = (props: Props) => {
               {["Home", "About", "Service"].map((item, index) => (
                 <span
                   key={index}
-                  className="text-[14px] leading-[20px] tracking-[0.015em] text-blueTert cursor-pointer"
-                >
+                  className="text-[14px] leading-[20px] tracking-[0.015em] text-blueTert cursor-pointer">
                   {item}
                 </span>
               ))}
@@ -48,8 +50,7 @@ const Footer = (props: Props) => {
                 (item, index) => (
                   <span
                     key={index}
-                    className="text-[14px] leading-[20px] tracking-[0.015em] text-blueTert cursor-pointer"
-                  >
+                    className="text-[14px] leading-[20px] tracking-[0.015em] text-blueTert cursor-pointer">
                     {item}
                   </span>
                 )

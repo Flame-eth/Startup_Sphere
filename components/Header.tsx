@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Icon } from "@iconify/react";
 
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { useAddress } from "@thirdweb-dev/react";
+import { useAppDispatch } from "../redux/hooks";
+import { setUserAddress } from "../redux/userSlice";
 
 type Props = {};
 
 const Header = (props: Props) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   const address = useAddress();
-  console.log(address);
+
+  useEffect(() => {
+    dispatch(setUserAddress(address));
+  }, [dispatch, address]);
 
   return (
     <header className="z-[100]">

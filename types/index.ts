@@ -10,8 +10,8 @@ export type Coin = {
 };
 
 export type userState = {
-  youSendCoin: Coin;
-  youReceiveCoin: Coin;
-  showCoinsModal: boolean;
-  firstCoinClicked: boolean;
+  proposalIDs: string[];
+  AllProposals: any[];
+  MyProposals: any[];
+  userAddress: string;
 };

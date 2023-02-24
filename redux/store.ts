@@ -17,7 +17,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: "blockchain",
+  key: "block",
   version: 1,
   storage,
 };

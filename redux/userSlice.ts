@@ -5,10 +5,10 @@ import type { Coin, userState } from "../types";
 
 // Define the initial state using that type
 const initialState: userState = {
-  youSendCoin: {},
-  youReceiveCoin: {},
-  showCoinsModal: false,
-  firstCoinClicked: false,
+  proposalIDs: [],
+  AllProposals: [],
+  MyProposals: [],
+  userAddress: "",
 };
 
 export const userSlice = createSlice({
@@ -16,26 +16,29 @@ export const userSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setSendCoin: (state, action: PayloadAction<Coin>) => {
-      state.youSendCoin = action.payload;
+    setProposalIDs: (state, action: PayloadAction<string[]>) => {
+      state.proposalIDs = action.payload;
     },
-    setReceiveCoin: (state, action: PayloadAction<Coin>) => {
-      state.youReceiveCoin = action.payload;
+    setAllProposals: (state, action: PayloadAction<any[]>) => {
+      state.AllProposals = [...state.AllProposals, action.payload];
     },
-    setShowCoinsModal: (state) => {
-      state.showCoinsModal = !state.showCoinsModal;
+    addProposal: (state, action: PayloadAction<Coin>) => {
+      state.AllProposals.push(action.payload);
     },
-    setFirstCoinClicked: (state, action: PayloadAction<boolean>) => {
-      state.firstCoinClicked = action.payload;
+    setMyProposals: (state, action) => {
+      state.MyProposals = [...state.MyProposals, action.payload];
+    },
+    setUserAddress: (state, action) => {
+      state.userAddress = action.payload;
     },
   },
 });
 
 export const {
-  setSendCoin,
-  setReceiveCoin,
-  setShowCoinsModal,
-  setFirstCoinClicked,
+  setProposalIDs,
+  setAllProposals,
+  setMyProposals,
+  setUserAddress,
 } = userSlice.actions;
 
 export default userSlice.reducer;

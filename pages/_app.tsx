@@ -12,12 +12,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const activeChainId = ChainId.Goerli;
   return (
-    <ThirdwebProvider>
+    <ThirdwebProvider >
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <Component {...pageProps} />
         </PersistGate>
       </Provider>
-    </ThirdwebProvider>
+    </ThirdwebProvider> 
   );
 }
