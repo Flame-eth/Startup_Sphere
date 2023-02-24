@@ -3,7 +3,6 @@ import Card from "./Card";
 import { getTotalProposals, verifyVoter } from "../Blockchain/funder";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { setAllProposals } from "../redux/userSlice";
-import { log } from "console";
 
 type Props = {};
 
@@ -38,14 +37,14 @@ const VotableProposals = (props: Props) => {
   );
   const dispatch = useAppDispatch();
 
-  console.log(userAddress);
+  // console.log(userAddress);
 
   verifyVoter(userAddress).then((res) => {
     setIsVoter(res);
   });
 
   useEffect(() => {
-    console.log(proposalIDs.length);
+    // console.log(proposalIDs.length);
     let proposalArr: any[] = [];
     for (let index = 0; index < proposalIDs.length; index++) {
       getTotalProposals(index).then((res) => {
@@ -71,7 +70,7 @@ const VotableProposals = (props: Props) => {
       .map((name) => filteredArrAppr.find((obj) => obj.name === name))!;
   }
 
-  console.log(filteredArrName);
+  // console.log(filteredArrName);
   return (
     <div className="flex items-center max-w-7xl mx-auto py-4 md:px-0 md:py-[3rem]">
       <div className="flex items-center flex-col w-full">
@@ -96,10 +95,11 @@ const VotableProposals = (props: Props) => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center w-full">
-            <div className="flex items-center py-[2rem] md:py-[3rem] w-[100%] flex-wrap justify-between md:px-[2rem] gap-4">
-              <h1>You are not a voter</h1>
-            </div>
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <h1
+              style={{ color: "black", fontSize: "20px", fontStyle: "italic" }}>
+              Your account is not a registered voter.
+            </h1>
           </div>
         )}
       </div>

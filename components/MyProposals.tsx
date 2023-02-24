@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { getTotalProposals } from "../Blockchain/funder";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
@@ -47,20 +47,33 @@ const MyProposal = (props: Props) => {
     }
   }, []);
 
+  const [isProposer, setIsProposer] = useState(false);
+
   function filterByProposer(array: any[], proposer: string): any[] {
     return array.filter((obj) => obj.proposer === proposer);
   }
 
   const filteredArrAddr: any[] = filterByProposer(AllProposals, userAddress);
 
-  // console.log(filteredArrAddr);
-
   const filteredArrName: any[] = filteredArrAddr
     .map((obj) => obj.name)
     .filter((name, index, names) => names.indexOf(name) === index)
     .map((name) => filteredArrAddr.find((obj) => obj.name === name))!;
 
-  // console.log(filteredArrName);
+  useEffect(() => {
+    if (filteredArrName) {
+      setIsProposer(true);
+    }
+  }, []);
+
+  console.log(isProposer);
+
+  if (filteredArrName.length >= 0) {
+    console.log("yes");
+    console.log(filteredArrAddr.length);
+  } else {
+    console.log("no");
+  }
 
   return (
     <div className="flex items-center max-w-7xl mx-auto py-4 md:px-0 md:py-[3rem]">
@@ -71,19 +84,30 @@ const MyProposal = (props: Props) => {
           </h2>
           <span className="text-blackPrim">See All</span>
         </div>
-        <div className="flex items-center justify-center w-full">
-          <div className="flex items-center py-[2rem] md:py-[3rem] w-[100%] flex-wrap justify-between md:px-[2rem] gap-4">
-            {filteredArrName.map((campaign, index) => (
-              <div key={index}>
-                <Card
-                  title={campaign.name}
-                  walletAdd={campaign.proposer}
-                  description={campaign.description}
-                />
-              </div>
-            ))}
+
+        {isProposer ? (
+          <div className="flex items-center justify-center w-full">
+            <div className="flex items-center py-[2rem] md:py-[3rem] w-[100%] flex-wrap justify-between md:px-[2rem] gap-4">
+              {filteredArrName.map((campaign, index) => (
+                <div key={index}>
+                  <Card
+                    title={campaign.name}
+                    walletAdd={campaign.proposer}
+                    description={campaign.description}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <h1
+              style={{ color: "black", fontSize: "20px", fontStyle: "italic" }}>
+              You have not created any proposals yet. Create a proposal to start
+              funding your project.
+            </h1>
+          </div>
+        )}
       </div>
     </div>
   );

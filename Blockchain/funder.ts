@@ -130,6 +130,27 @@ const ABI = [
   },
   {
     anonymous: null,
+    name: "allProposalsMap",
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      { internalType: "string", name: "name", type: "string" },
+      { internalType: "string", name: "description", type: "string" },
+      { internalType: "string", name: "projectCID", type: "string" },
+      { internalType: "address payable", name: "proposer", type: "address" },
+      { internalType: "uint256", name: "goalAmount", type: "uint256" },
+      { internalType: "uint256", name: "deadline", type: "uint256" },
+      { internalType: "uint256", name: "raisedAmount", type: "uint256" },
+      { internalType: "uint256", name: "votes", type: "uint256" },
+      { internalType: "bool", name: "approved", type: "bool" },
+      { internalType: "bool", name: "funded", type: "bool" },
+      { internalType: "uint256", name: "proposalTime", type: "uint256" },
+      { internalType: "bool", name: "paidOut", type: "bool" },
+    ],
+    type: "function",
+    stateMutability: "view",
+  },
+  {
+    anonymous: null,
     name: "createProposal",
     inputs: [
       { internalType: "string", name: "_name", type: "string" },
@@ -168,6 +189,16 @@ const ABI = [
     outputs: [
       { internalType: "address", name: "funder", type: "address" },
       { internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    type: "function",
+    stateMutability: "view",
+  },
+  {
+    anonymous: null,
+    name: "getAllProposalMap",
+    inputs: [{ internalType: "uint256", name: "_index", type: "uint256" }],
+    outputs: [
+      { internalType: "struct funder.fundProposal", name: "", type: "tuple" },
     ],
     type: "function",
     stateMutability: "view",
@@ -435,7 +466,7 @@ const ABI = [
   },
 ];
 
-const contractAddress = "0x81320F10cD32fda1305930cE5a2Eaf364968B50e";
+const contractAddress = "0x53D099f3ec58a27DaA968F7De1C1Fb9e3AD88C8B";
 
 // Create contract instance
 const contract = new web3.eth.Contract(ABI, contractAddress);
@@ -517,7 +548,7 @@ export const getProposalIDs = async () => {
   return tx;
 };
 
-getProposalIDs().then((res) => console.log(res));
+// getProposalIDs().then((res) => console.log(res));
 
 export const getVoters = async () => {
   const tx = await contract.methods.getVoters().call();
