@@ -9,6 +9,7 @@ const initialState: userState = {
   AllProposals: [],
   MyProposals: [],
   userAddress: "",
+  VoteableProposals: [],
 };
 
 export const userSlice = createSlice({
@@ -31,6 +32,9 @@ export const userSlice = createSlice({
     setUserAddress: (state, action) => {
       state.userAddress = action.payload;
     },
+    setVoteableProposals: (state, action) => {
+      state.VoteableProposals = [...state.VoteableProposals, action.payload];
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   setAllProposals,
   setMyProposals,
   setUserAddress,
+  setVoteableProposals,
 } = userSlice.actions;
 
 export default userSlice.reducer;

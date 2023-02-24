@@ -35,13 +35,13 @@ const MyProposal = (props: Props) => {
   ];
 
   useEffect(() => {
-    console.log(proposalIDs.length);
+    // console.log(proposalIDs.length);
     let proposalArr: any[] = [];
     for (let index = 0; index < proposalIDs.length; index++) {
       getTotalProposals(index).then((res) => {
         // proposalArr.push(res);
         dispatch(setAllProposals(res));
-        console.log(res.proposer);
+        // console.log(res.proposer);
         ``;
       });
     }
@@ -53,14 +53,14 @@ const MyProposal = (props: Props) => {
 
   const filteredArrAddr: any[] = filterByProposer(AllProposals, userAddress);
 
-  console.log(filteredArrAddr);
+  // console.log(filteredArrAddr);
 
   const filteredArrName: any[] = filteredArrAddr
     .map((obj) => obj.name)
     .filter((name, index, names) => names.indexOf(name) === index)
     .map((name) => filteredArrAddr.find((obj) => obj.name === name))!;
 
-  console.log(filteredArrName);
+  // console.log(filteredArrName);
 
   return (
     <div className="flex items-center max-w-7xl mx-auto py-4 md:px-0 md:py-[3rem]">

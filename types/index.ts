@@ -14,4 +14,5 @@ export type userState = {
   AllProposals: any[];
   MyProposals: any[];
   userAddress: string;
+  VoteableProposals: any[];
 };
