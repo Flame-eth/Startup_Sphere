@@ -61,19 +61,14 @@ const MyProposal = (props: Props) => {
     .map((name) => filteredArrAddr.find((obj) => obj.name === name))!;
 
   useEffect(() => {
-    if (filteredArrName) {
+    if (filteredArrName.length > 0) {
       setIsProposer(true);
+    } else {
+      setIsProposer(false);
     }
-  }, []);
+  }, [userAddress, filteredArrName]);
 
   console.log(isProposer);
-
-  if (filteredArrName.length >= 0) {
-    console.log("yes");
-    console.log(filteredArrAddr.length);
-  } else {
-    console.log("no");
-  }
 
   return (
     <div className="flex items-center max-w-7xl mx-auto py-4 md:px-0 md:py-[3rem]">
