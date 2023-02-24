@@ -82,8 +82,8 @@ const Header = (props: Props) => {
                 btnTitle="Connect Wallet"
               />
               <li className="p-2 border border-blackTert rounded-[4px] flex items-center justify-center">
-                <Link href="/contact" className="w-[60px] inline-block">
-                  Sign Up
+                <Link href="" className="w-[60px] inline-block">
+                  Create Proposal
                 </Link>
               </li>
             </ul>
